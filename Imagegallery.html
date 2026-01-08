@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Gallery</title>
+<link rel="stylesheet" href="css/Po2.css">
+</head>
+<body>
+
+<div class="top-controls">
+    <button onclick="filterImages('all')">All</button>
+    <button onclick="filterImages('nature')">Nature</button>
+    <button onclick="filterImages('city')">City</button>
+    <button onclick="filterImages('people')">People</button>
+    <button onclick="toggleTheme()">🌙</button>
+</div>
+
+<div class="gallery">
+    <img src="https://picsum.photos/id/1015/600/400" class="nature">
+    <img src="https://picsum.photos/id/1011/600/400" class="nature">
+    <img src="https://picsum.photos/id/1020/600/400" class="city">
+    <img src="https://picsum.photos/id/1005/600/400" class="people">
+    <img src="https://picsum.photos/id/1016/600/400" class="city">
+    <img src="https://picsum.photos/id/1027/600/400" class="people">
+</div>
+
+<div class="popup" id="popup">
+    <span onclick="closePopup()">✖</span>
+    <img id="popupImg">
+</div>
+
+<script>
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popupImg");
+
+document.querySelectorAll(".gallery img").forEach(img => {
+    img.onclick = () => {
+        popup.style.display = "flex";
+        popupImg.src = img.src;
+    }
+});
+
+function closePopup(){
+    popup.style.display = "none";
+}
+
+function filterImages(category){
+    document.querySelectorAll(".gallery img").forEach(img => {
+        img.style.display = (category === 'all' || img.classList.contains(category)) ? 'block' : 'none';
+    });
+}
+
+function toggleTheme(){
+    document.body.classList.toggle("dark");
+}
+</script>
+
+
+</body>
+</html>

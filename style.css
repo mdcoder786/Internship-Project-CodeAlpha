@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   LOADING SCREEN
+========================= */
+
+
+
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.4));
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 70px;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+/* Logo */
+header .logo img {
+    height: 48px;
+    cursor: pointer;
+}
+
+/* Navigation */
+header ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+header ul li a {
+    color: #f5f5f5;
+    font-size: 16px;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+
+/* Underline animation */
+header ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #ff4f5a;
+    transition: 0.3s;
+}
+
+header ul li a:hover {
+    color: #ff4f5a;
+}
+
+header ul li a:hover::after {
+    width: 100%;
+}
+
+/* Mobile menu icon */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    color: rgb(37, 251, 251);
+    cursor: pointer;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+main {
+    height: 100vh;
+    padding-top: 75px;
+    background: url("../pexels-chanwalrus-958545.jpg") center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* Logo */
+main img {
+    width: 280px;
+    margin-bottom: 20px;
+    animation: fadeUp 1s ease forwards;
+}
+
+/* Text */
+main p {
+    font-size: 30px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.3s;
+}
+
+/* Search */
+main input {
+    width: 350px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.6s;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 0 25px;
+    }
+
+    header ul {
+        position: absolute;
+        top: 75px;
+        right: 0;
+        background: rgba(0,0,0,0.95);
+        flex-direction: column;
+        width: 220px;
+        padding: 20px;
+        gap: 15px;
+        transform: translateX(100%);
+        transition: 0.3s;
+    }
+
+    header ul.active {
+        transform: translateX(0);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    main p {
+        font-size: 22px;
+    }
+
+    main input {
+        width: 90%;
+    }
+}
